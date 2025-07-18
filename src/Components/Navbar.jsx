@@ -45,7 +45,7 @@ const Navbar = () => {
         <span>
           Call:{" "}
           <a href="tel:+919211841929" className="text-[#F4B400] hover:underline">
-            9211841929
+           +91 9211841929
           </a>
         </span>
         <span>GSTIN: 07MHBPK0355G1ZE</span>
