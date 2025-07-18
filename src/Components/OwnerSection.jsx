@@ -1,187 +1,138 @@
 import React from "react";
-import { FaPhoneAlt, FaEnvelope, FaUserCircle } from "react-icons/fa";
 import { motion } from "framer-motion";
+import { FaPhoneAlt, FaEnvelope, FaUserCircle } from "react-icons/fa";
 
+/**
+ * OwnerSection – Shiv Traders (Grace of Cows)
+ * Responsive founder message + contact CTA
+ */
 const OwnerSection = () => {
   return (
     <section
-      className="
-        relative w-full overflow-hidden
-        bg-gradient-to-br from-[#FFFDF8] via-[#F8F1E7] to-[#FFFDF8]
-        py-20 sm:py-24 px-4 sm:px-8
-      "
+      className="relative w-full overflow-hidden bg-[#FDF8F3] py-20 sm:py-24 px-4 sm:px-8 font-sans"
     >
-      {/* Subtle Watermark Heading (hidden on very small screens to avoid clutter) */}
+      {/* Subtle Watermark Heading (hidden on very small screens) */}
       <h1
-        className="
-          hidden xs:block
-          absolute top-5 left-1/2 -translate-x-1/2
-          text-[18vw] sm:text-[15vw] md:text-[10vw]
-          text-[#D4B25F]/10 font-bold tracking-widest whitespace-nowrap
-          pointer-events-none select-none z-0 leading-none font-serif
-        "
+        className="hidden xs:block absolute top-5 left-1/2 -translate-x-1/2 text-[18vw] sm:text-[15vw] md:text-[10vw]
+                   text-[#7A1E09]/5 font-extrabold tracking-widest whitespace-nowrap pointer-events-none select-none
+                   z-0 leading-none font-heading"
+        style={{ fontFamily: "Merriweather, serif" }}
       >
-        Bhagwati Traders
+        Shiv Traders
       </h1>
 
-      {/* Decorative soft wave SVG */}
-      <svg
-        className="absolute top-0 left-0 w-full h-full opacity-5 pointer-events-none"
-        xmlns="http://www.w3.org/2000/svg"
-        preserveAspectRatio="none"
-        viewBox="0 0 1920 400"
-      >
-        <path
-          fill="#D4B25F"
-          d="M0,160 C480,320 1440,0 1920,160 L1920,400 L0,400 Z"
-        ></path>
-      </svg>
+      {/* Decorative gradient blobs */}
+      <div className="pointer-events-none absolute -top-16 -left-16 w-60 h-60 rounded-full bg-[#F4B400]/20 blur-3xl" />
+      <div className="pointer-events-none absolute bottom-0 right-0 w-72 h-72 rounded-full bg-[#7A1E09]/10 blur-2xl" />
 
       {/* Pill Heading */}
       <div className="flex justify-center relative z-10 mb-6 sm:mb-8">
         <div
-          className="
-            flex items-center gap-2
-            bg-[#6B3E26] px-3 py-1.5 sm:px-4 sm:py-2
-            rounded-full shadow text-white
-            font-semibold text-xs sm:text-sm md:text-base
-          "
+          className="flex items-center gap-2 bg-[#7A1E09] px-4 py-2 rounded-full shadow text-white font-semibold
+                     text-xs sm:text-sm md:text-base uppercase tracking-wide"
         >
           Meet Our Founder
         </div>
       </div>
 
-      {/* Wrapper: Owner Card + Contact CTA */}
+      {/* Wrapper: Founder + Contact CTA */}
       <motion.div
-        className="
-          max-w-5xl mx-auto
-          bg-white/90 backdrop-blur-sm rounded-2xl shadow-lg
-          px-4 sm:px-6 md:px-12 py-10 sm:py-12
-          flex flex-col md:flex-row items-center justify-between gap-8 md:gap-10
-          relative z-10
-        "
+        className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-10 relative z-10"
         initial={{ opacity: 0, y: 60 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, amount: 0.25 }}
         transition={{ duration: 0.7, ease: "easeOut" }}
       >
-        {/* Owner Card */}
+        {/* Founder Card */}
         <motion.div
-          className="
-            bg-[#FFFDF8] flex-1 w-full
-            rounded-2xl p-6 sm:p-8
-            shadow-md text-center
-            hover:shadow-xl transition-shadow duration-300
-          "
           initial={{ x: -30, opacity: 0 }}
           whileInView={{ x: 0, opacity: 1 }}
           viewport={{ once: true, amount: 0.25 }}
           transition={{ delay: 0.15, duration: 0.6, ease: "easeOut" }}
+          className="relative bg-white rounded-2xl shadow-xl p-8 sm:p-10 flex flex-col items-center text-center"
         >
-          {/* User Icon */}
-          <div className="flex justify-center mb-4 sm:mb-5">
-            <FaUserCircle className="text-[#D4B25F] text-7xl sm:text-8xl drop-shadow-md" />
-          </div>
+          {/* Accent ring */}
+          <div className="absolute -top-8 -left-8 w-24 h-24 rounded-full bg-[#F4B400]/20 blur-2xl" />
+
+          {/* Founder avatar */}
+          <FaUserCircle className="text-[#F4B400] text-8xl drop-shadow mb-5" />
+
           <h2
-            className="
-              text-lg sm:text-xl md:text-2xl
-              font-semibold text-[#6B3E26] mb-3
-            "
+            className="text-xl sm:text-2xl md:text-3xl font-bold text-[#7A1E09] mb-4 font-heading"
+            style={{ fontFamily: "Merriweather, serif" }}
           >
             A Word from Our Founder
           </h2>
+
           <p
-            className="
-              text-gray-700
-              text-sm sm:text-base md:text-lg
-              mb-5 leading-relaxed tracking-wide italic
-              max-w-md mx-auto
-            "
+            className="text-gray-700 text-sm sm:text-base md:text-lg mb-5 leading-relaxed italic max-w-md"
+            style={{ fontFamily: "Inter, sans-serif" }}
           >
-            "We make ghee the way our grandparents did—slow, pure, and with
-            complete honesty. If it’s not good enough for our family, it’s not
-            leaving our factory."
+            “We don’t rush ghee. We respect it. Made slow, checked for purity,
+            and packed with honesty—if it isn’t good enough for my family, it
+            will never reach yours.”
           </p>
-          <p className="text-[#6B3E26] font-bold uppercase text-xs sm:text-sm tracking-wide">
-            — TOKHRAM SINGH (FOUNDER)
+
+          <p className="text-[#7A1E09] font-bold uppercase text-xs sm:text-sm tracking-wide font-heading"
+             style={{ fontFamily: "Merriweather, serif" }}>
+            — ANIL KUMAR HARIJAN (FOUNDER)
           </p>
         </motion.div>
 
-        {/* Contact CTA */}
+        {/* Contact / Partner CTA */}
         <motion.div
-          className="flex-1 w-full text-center md:text-left"
           initial={{ x: 30, opacity: 0 }}
           whileInView={{ x: 0, opacity: 1 }}
           viewport={{ once: true, amount: 0.25 }}
           transition={{ delay: 0.25, duration: 0.6, ease: "easeOut" }}
+          className="relative rounded-2xl p-[2px] bg-gradient-to-br from-[#F4B400] to-[#C47E00] shadow-xl"
         >
-          <h2
-            className="
-              text-2xl sm:text-3xl md:text-4xl
-              font-bold text-[#6B3E26] mb-3 sm:mb-4 font-serif
-            "
-          >
-            Let’s Connect
-          </h2>
-          <p
-            className="
-              text-gray-700
-              text-sm sm:text-base md:text-lg
-              mb-5 sm:mb-6
-              max-w-md md:max-w-none mx-auto md:mx-0
-            "
-          >
-            Want to stock our ghee, become a distribution partner, or know how
-            we make it? Get in touch—we’re happy to help.
-          </p>
-
-          {/* Contact Buttons */}
-          <div
-            className="
-              flex flex-col xs:flex-row justify-center md:justify-start items-center
-              gap-3 sm:gap-4
-            "
-          >
-            {/* Phone */}
-            <a
-              href="tel:+917303672909"
-              className="
-                inline-flex items-center justify-center gap-2
-                px-4 sm:px-6 py-2 sm:py-3
-                rounded-full font-semibold
-                bg-[#D4B25F] text-white hover:bg-[#B8933B]
-                transition
-                text-xs sm:text-sm md:text-base
-                whitespace-nowrap
-              "
+          <div className="h-full w-full rounded-2xl bg-white/95 backdrop-blur-sm p-8 sm:p-10 flex flex-col justify-center text-center md:text-left">
+            <h2
+              className="text-2xl sm:text-3xl md:text-4xl font-bold text-[#7A1E09] mb-4 font-heading"
+              style={{ fontFamily: "Merriweather, serif" }}
             >
-              <FaPhoneAlt className="shrink-0" />
-              <span className="whitespace-nowrap">+91 7303672909</span>
-            </a>
-
-            {/* Email */}
-            <a
-              href="mailto:Info@bhagwatitrader.co.in"
-              className="
-                inline-flex items-center justify-center gap-2
-                px-4 sm:px-6 py-2 sm:py-3
-                rounded-full font-semibold
-                bg-[#6B3E26] text-white hover:bg-[#8F5A3C]
-                transition
-                text-xs sm:text-sm md:text-base
-                whitespace-nowrap
-              "
+              Let’s Connect
+            </h2>
+            <p
+              className="text-gray-700 text-sm sm:text-base md:text-lg mb-6 max-w-md md:max-w-none"
+              style={{ fontFamily: "Inter, sans-serif" }}
             >
-              <FaEnvelope className="shrink-0" />
-              <span className="whitespace-nowrap">Info@bhagwatitrader.co.in</span>
-            </a>
+              Want to stock our Shuddh Desi Ghee, become a distributor, or learn
+              more about our traditional process? Reach out—we’re happy to help.
+            </p>
+
+            {/* Contact Buttons */}
+            <div className="flex flex-col xs:flex-row justify-center md:justify-start items-center gap-3 sm:gap-4 w-full">
+              {/* Phone */}
+              <a
+                href="tel:+919211841929"
+                className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-full font-semibold
+                           bg-gradient-to-r from-[#F4B400] to-[#C47E00] text-white hover:opacity-90 hover:scale-105
+                           transition-transform text-sm md:text-base whitespace-nowrap shadow-md"
+              >
+                <FaPhoneAlt className="shrink-0" />
+                <span className="whitespace-nowrap">+91 9211841929</span>
+              </a>
+
+              {/* Email */}
+              <a
+                href="mailto:Shivtradersdelhi1@gmail.com"
+                className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-full font-semibold
+                           bg-[#7A1E09] text-white hover:bg-[#7A1E09]/90 hover:scale-105 transition-transform
+                           text-sm md:text-base whitespace-nowrap shadow-md"
+              >
+                <FaEnvelope className="shrink-0" />
+                <span className="whitespace-nowrap">Shivtradersdelhi1@gmail.com</span>
+              </a>
+            </div>
           </div>
         </motion.div>
       </motion.div>
 
-      {/* Decorative blobs */}
-      <div className="absolute -bottom-10 -left-10 w-48 h-48 rounded-full bg-[#D4B25F]/20 blur-3xl z-0"></div>
-      <div className="absolute top-0 -right-10 w-40 h-40 rounded-full bg-[#8F5A3C]/10 blur-2xl z-0"></div>
+      {/* Decorative blobs bottom */}
+      <div className="pointer-events-none absolute -bottom-10 -left-10 w-48 h-48 rounded-full bg-[#F4B400]/20 blur-3xl" />
+      <div className="pointer-events-none absolute top-0 -right-10 w-40 h-40 rounded-full bg-[#C47E00]/20 blur-2xl" />
     </section>
   );
 };

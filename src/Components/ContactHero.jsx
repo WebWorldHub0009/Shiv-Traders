@@ -1,9 +1,9 @@
 import React from "react";
 import { motion } from "framer-motion";
-import contactBg from "../assets/images/contact-hero.avif"; // ✅ Replace with your actual image
+import contactBg from "../assets/images/contact-hero.avif"; // ✅ Update path if needed
 
 const shimmerText = {
-  background: "linear-gradient(90deg, #D4B25F, #f7eec8, #D4B25F)",
+  background: "linear-gradient(90deg, #F4B400, #fff3d1, #F4B400)",
   backgroundSize: "200% auto",
   WebkitBackgroundClip: "text",
   WebkitTextFillColor: "transparent",
@@ -11,63 +11,66 @@ const shimmerText = {
 };
 
 const ContactHero = () => {
-  // ✅ Open WhatsApp on button click
   const openWhatsApp = () => {
-    const phoneNumber = "917303672909"; // ✅ Without +
+    const phoneNumber = "919211841929"; // ✅ WhatsApp number without +
     const message = encodeURIComponent("Hello! I would like to know more about your products.");
     window.open(`https://wa.me/${phoneNumber}?text=${message}`, "_blank");
   };
 
   return (
     <section
-      className="relative w-full h-[70vh] md:h-[85vh] bg-cover bg-center flex items-center justify-center px-6"
+      className="relative w-full h-[70vh] md:h-[85vh] flex items-center justify-center bg-cover bg-center"
       style={{ backgroundImage: `url(${contactBg})` }}
+      aria-labelledby="contact-hero-title"
     >
-      {/* Overlay */}
-      <div className="absolute inset-0 bg-gradient-to-b from-black/70 to-black/40 z-0"></div>
+      {/* ✅ Gradient Overlay */}
+      <div className="absolute inset-0 bg-gradient-to-b from-[#7a1e097a] via-[#7a1e094d] to-black z-0"></div>
 
-      {/* Floating Decorative Elements */}
-      <div className="absolute top-10 left-10 w-32 h-32 bg-[#D4B25F]/20 rounded-full blur-3xl animate-pulse-slow"></div>
-      <div className="absolute bottom-10 right-10 w-40 h-40 bg-[#D4B25F]/30 rounded-full blur-[100px] animate-float"></div>
+      {/* ✅ Decorative Floating Blobs */}
+      <div className="absolute top-10 left-10 w-32 h-32 bg-[#F4B400]/30 rounded-full blur-3xl animate-pulse-slow"></div>
+      <div className="absolute bottom-10 right-10 w-40 h-40 bg-[#F4B400]/20 rounded-full blur-[100px] animate-float"></div>
 
-      {/* Main Content */}
+      {/* ✅ Main Content */}
       <motion.div
         initial={{ opacity: 0, y: 30 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8 }}
-        className="relative z-10 max-w-3xl text-center text-white"
+        className="relative z-10 text-center max-w-3xl px-6"
       >
-        {/* Updated Heading */}
+        {/* ✅ Heading with shimmer */}
         <h1
-          className="text-4xl md:text-6xl font-bold mb-6"
+          id="contact-hero-title"
+          className="text-4xl md:text-6xl font-bold mb-6 tracking-wide"
           style={shimmerText}
         >
           “Your Trust, Our Tradition”
         </h1>
 
-        {/* Longer Subheading */}
+        {/* ✅ Subheading */}
         <motion.p
           animate={{ opacity: [0.8, 1, 0.8] }}
           transition={{ repeat: Infinity, duration: 6, ease: "easeInOut" }}
-          className="text-lg md:text-xl text-gray-300 mb-6"
+          className="text-lg md:text-xl text-[#f8f6f2] mb-8 leading-relaxed"
         >
-          Have a query or planning a bulk order? Let's connect and bring
-          authentic taste to your home. Our team is just a message away to help
-          you with the best quality products and quick service.
+          Have a query or planning a bulk order? Let’s connect and bring authentic taste to your home. Our team is just a message away!
         </motion.p>
 
-        {/* Contact Button -> Opens WhatsApp */}
-        <motion.div whileHover={{ scale: 1.05 }}>
+        {/* ✅ WhatsApp Button */}
+        <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.98 }}>
           <button
             onClick={openWhatsApp}
-            className="cursor-pointer inline-block px-8 py-3 bg-black text-white font-semibold border border-[#D4B25F] hover:bg-[#D4B25F] hover:text-black transition-all duration-300 rounded-full shadow-lg"
+            className="inline-block px-10 py-4 font-semibold text-white text-lg rounded-full
+                       bg-gradient-to-r from-[#F4B400] to-[#C47E00]
+                       shadow-xl hover:from-[#C47E00] hover:to-[#F4B400]
+                       transition-all duration-300"
+            aria-label="Contact us on WhatsApp"
           >
             Contact Us on WhatsApp
           </button>
         </motion.div>
       </motion.div>
 
-      {/* Custom Animations */}
+      {/* ✅ Custom Animations */}
       <style>{`
         @keyframes shimmer {
           0% { background-position: 0% center; }
@@ -78,15 +81,11 @@ const ContactHero = () => {
           50% { transform: translateY(-10px); }
         }
         @keyframes pulse-slow {
-          0%, 100% { opacity: 0.5; transform: scale(1); }
+          0%, 100% { opacity: 0.6; transform: scale(1); }
           50% { opacity: 1; transform: scale(1.1); }
         }
-        .animate-float {
-          animation: float 6s ease-in-out infinite;
-        }
-        .animate-pulse-slow {
-          animation: pulse-slow 5s ease-in-out infinite;
-        }
+        .animate-float { animation: float 6s ease-in-out infinite; }
+        .animate-pulse-slow { animation: pulse-slow 5s ease-in-out infinite; }
       `}</style>
     </section>
   );

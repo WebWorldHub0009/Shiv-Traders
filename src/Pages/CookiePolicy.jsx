@@ -8,60 +8,68 @@ const CookiePolicy = () => {
       <motion.div
         initial={{ opacity: 0, y: 40 }}
         animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.6 }}
-        className="max-w-4xl mx-auto bg-white/90 backdrop-blur-lg rounded-2xl shadow-lg p-8 md:p-12"
+        transition={{ duration: 0.8, ease: "easeOut" }}
+        className="max-w-4xl mx-auto bg-white/95 backdrop-blur-lg rounded-2xl shadow-xl p-8 md:p-12 border border-[#f5f0e8]"
       >
-        {/* Heading */}
-        <h1 className="text-4xl md:text-5xl font-extrabold text-yellow-700 mb-6">
-          Cookie Policy — Bhagwati Traders
-        </h1>
+        {/* ✅ Heading */}
+        <motion.h1
+          initial={{ opacity: 0, y: -20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          className="text-4xl md:text-5xl font-extrabold mb-6 tracking-wide"
+          style={{
+            background: "linear-gradient(90deg,#F4B400,#C47E00)",
+            WebkitBackgroundClip: "text",
+            WebkitTextFillColor: "transparent",
+          }}
+        >
+          Cookie Policy — Shiv Traders
+        </motion.h1>
 
-        {/* Intro */}
-        <p className="text-lg text-gray-800 mb-4">
-          At <strong>Bhagwati Traders</strong>, we use cookies and similar
-          tracking technologies to improve your browsing experience and analyze
-          site traffic. By using our website, you consent to our use of cookies
-          in accordance with this policy.
+        {/* ✅ Intro */}
+        <p className="text-lg text-gray-700 mb-6 leading-relaxed">
+          At <strong>Shiv Traders</strong>, we use cookies and similar tracking
+          technologies to enhance your browsing experience, improve site
+          performance, and analyze usage. By using our website, you consent to
+          the use of cookies as described in this policy.
         </p>
 
-        {/* Essential Cookies */}
-        <h2 className="text-2xl font-semibold text-yellow-600 mt-8 mb-2">
+        {/* ✅ Essential Cookies Section */}
+        <h2 className="text-2xl font-semibold text-[#7A1E09] mt-8 mb-3">
           Essential Cookies
         </h2>
-        <p className="text-gray-800 mb-4">
-          These cookies are necessary for the basic functioning of our website.
-          Without them, certain features and services would not work properly.
+        <p className="text-gray-700 mb-4">
+          These cookies are crucial for the basic functionality of our website.
+          Without them, some services and features may not work as intended.
         </p>
 
-        <ul className="list-disc list-inside space-y-2 text-gray-800">
+        <ul className="list-disc list-inside space-y-3 text-gray-800">
           <li>
-            <span className="font-semibold text-yellow-700">Session Cookies:</span>{" "}
-            Used to maintain your session on our website while navigating pages
-            or logging in.
+            <span className="font-semibold text-[#F4B400]">Session Cookies:</span>{" "}
+            Maintain your session as you navigate pages or log into your account.
           </li>
           <li>
-            <span className="font-semibold text-yellow-700">Security Tokens:</span>{" "}
-            Protect against cross-site request forgery (CSRF) and ensure your
-            interactions are secure.
+            <span className="font-semibold text-[#F4B400]">Security Tokens:</span>{" "}
+            Help protect against CSRF attacks and ensure secure user interaction.
           </li>
         </ul>
 
-        {/* Your Choices */}
-        <h2 className="text-2xl font-semibold text-yellow-600 mt-8 mb-2">
+        {/* ✅ Managing Cookies */}
+        <h2 className="text-2xl font-semibold text-[#7A1E09] mt-10 mb-3">
           Your Choices
         </h2>
-        <p className="text-gray-800 mb-4">
-          You can adjust your browser settings to decline cookies if you prefer,
-          but please note that this may affect the functionality and performance
-          of our website.
+        <p className="text-gray-700 mb-6">
+          You can adjust your browser settings to block or delete cookies at any
+          time. However, please note that doing so may impact website
+          functionality and your overall experience.
         </p>
 
-        {/* Closing Note */}
-        <div className="mt-10">
-          <p className="text-sm text-gray-600">
-            By continuing to use the <strong>Bhagwati Traders</strong> website,
-            you agree to our cookie policy and our commitment to protect your
-            privacy.
+        {/* ✅ Closing Note */}
+        <div className="mt-10 p-4 bg-[#FFF8E7] rounded-lg border-l-4 border-[#F4B400] text-gray-700">
+          <p className="text-sm">
+            By continuing to browse the <strong>Shiv Traders</strong> website,
+            you acknowledge and accept our Cookie Policy. We remain committed to
+            safeguarding your privacy and ensuring transparency.
           </p>
         </div>
       </motion.div>
