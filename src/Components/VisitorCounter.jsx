@@ -12,9 +12,9 @@ export default function VisitorCounter() {
   }, []);
 
   return (
-    <div className="text-yellow-800 text-sm md:text-base font-medium text-center mx-2">
+    <div className="text-yellow-400 text-sm md:text-base font-medium text-center mx-2">
       Visitor Count:{" "}
-      <span className="text-black font-semibold">{count.toLocaleString()}</span>
+      <span className="text-white font-semibold">{count.toLocaleString()}</span>
     </div>
   );
 }

@@ -46,7 +46,7 @@ const AboutHero = () => {
           transition={{ repeat: Infinity, duration: 6, ease: "easeInOut" }}
           className="text-lg md:text-xl tracking-wider text-gray-300 mb-6 leading-relaxed"
         >
-          At Bhagwati Traders, we bring you pure Desi Cow Ghee, prepared with
+          At Shiv Traders, we bring you pure Desi Cow Ghee, prepared with
           care and heritage. Every jar is a promise of authenticity, purity, and
           taste—crafted to enhance your meals and nourish your family.
         </motion.p>

@@ -18,13 +18,13 @@ import {
 import { Link, useNavigate } from "react-router-dom";
 import Translator from "./Translator";
 import VisitorCounter from "./VisitorCounter";
-import footerBg from "../assets/images/footer-bg.avif"; // ✅ Background image
+import footerBg from "../assets/images/bg-footer.jpg"; // ✔ background image
 
 const Footer = () => {
   const year = new Date().getFullYear();
   const navigate = useNavigate();
 
-  // Social buttons -> open platform root until brand handles available
+  // Social buttons -> update when real handles ready
   const socials = [
     { Icon: FaFacebookF, label: "Facebook", href: "https://www.facebook.com" },
     { Icon: FaInstagram, label: "Instagram", href: "https://www.instagram.com" },
@@ -32,7 +32,7 @@ const Footer = () => {
     {
       Icon: FaWhatsapp,
       label: "WhatsApp",
-      href: "https://wa.me/917303672909", // pre-fill with your number
+      href: "https://wa.me/919211841929", // Shiv Traders number
     },
   ];
 
@@ -57,18 +57,25 @@ const Footer = () => {
       style={{ backgroundImage: `url(${footerBg})` }}
     >
       {/* Overlay for readability */}
-      <div className="absolute inset-0 z-0"></div>
+      <div className="absolute inset-0 z-0 bg-[#ffffffc4] mix-blend-multiply backdrop-blur-sm" />
 
-      <div className="relative z-10 max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10">
-        {/* About Bhagwati Traders */}
-        <div className="rounded-lg p-6 flex flex-col justify-between bg-white/60 backdrop-blur-sm shadow">
-          <h3 className="text-2xl font-extrabold mb-5 tracking-wide drop-shadow text-[#6B3E26] font-serif">
-            About Bhagwati Traders
+      <div className="relative z-10 max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10 text-white">
+        {/* About Shiv Traders */}
+        <div className="rounded-lg p-6 flex flex-col justify-between ">
+          <h3
+            className="text-2xl font-extrabold mb-5 tracking-wide drop-shadow font-heading text-[#F4B400]"
+            style={{ fontFamily: "Merriweather, serif" }}
+          >
+            About Shiv Traders
           </h3>
-          <p className="text-sm leading-relaxed mb-6 text-gray-700">
-            Bhagwati Traders offers pure, traditionally prepared Desi Ghee made
-            from farm-fresh milk. We stand for honesty, nutrition, and the
-            authentic flavor every Indian kitchen deserves.
+          <p
+            className="text-sm leading-relaxed mb-6 text-[#FDF8F3]/90 font-sans"
+            style={{ fontFamily: "Inter, sans-serif" }}
+          >
+            Shiv Traders (Grace of Cows) brings you **Shuddh Desi Ghee** prepared with
+            care, traditional methods, and hygienic handling. We serve homes,
+            sweet shops, temples, and bulk buyers who value purity, aroma, and
+            trusted quality.
           </p>
 
           {/* Socials */}
@@ -80,11 +87,8 @@ const Footer = () => {
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label={label}
-                className="
-                  bg-white/80 p-3 rounded-full text-[#6B3E26]
-                  hover:bg-[#D4B25F] hover:text-white
-                  transition-transform duration-300 hover:scale-110 shadow-md
-                "
+                className="bg-[#6e000094] p-3 rounded-full text-[#F4B400] hover:bg-[#F4B400] hover:text-[#7A1E09]
+                           transition-transform duration-300 hover:scale-110 shadow-md"
               >
                 <Icon size={18} />
               </a>
@@ -98,49 +102,55 @@ const Footer = () => {
         </div>
 
         {/* Quick Links */}
-        <div className="p-6 bg-white/60 backdrop-blur-sm shadow rounded-lg">
-          <h3 className="text-2xl font-extrabold mb-5 tracking-wide drop-shadow text-[#6B3E26] font-serif">
+        <div className="p-6">
+          <h3
+            className="text-2xl font-extrabold mb-5 tracking-wide drop-shadow font-heading text-[#F4B400]"
+            style={{ fontFamily: "Merriweather, serif" }}
+          >
             Quick Links
           </h3>
-          <ul className="space-y-3 text-sm text-gray-700">
+          <ul
+            className="space-y-3 text-sm font-sans"
+            style={{ fontFamily: "Inter, sans-serif" }}
+          >
             <li>
               <Link
                 to="/"
-                className="flex items-center gap-2 hover:underline hover:text-[#8F5A3C] transition"
+                className="flex items-center gap-2 hover:underline hover:text-[#F4B400] transition"
               >
-                <FaHome className="text-[#D4B25F]" /> Home
+                <FaHome className="text-[#C47E00]" /> Home
               </Link>
             </li>
             <li>
               <Link
                 to="/about"
-                className="flex items-center gap-2 hover:underline hover:text-[#8F5A3C] transition"
+                className="flex items-center gap-2 hover:underline hover:text-[#F4B400] transition"
               >
-                <FaInfoCircle className="text-[#D4B25F]" /> About
+                <FaInfoCircle className="text-[#C47E00]" /> About
               </Link>
             </li>
             <li>
               <Link
                 to="/products"
-                className="flex items-center gap-2 hover:underline hover:text-[#8F5A3C] transition"
+                className="flex items-center gap-2 hover:underline hover:text-[#F4B400] transition"
               >
-                <FaBoxes className="text-[#D4B25F]" /> Products
+                <FaBoxes className="text-[#C47E00]" /> Products
               </Link>
             </li>
             <li>
               <Link
                 to="/certificates"
-                className="flex items-center gap-2 hover:underline hover:text-[#8F5A3C] transition"
+                className="flex items-center gap-2 hover:underline hover:text-[#F4B400] transition"
               >
-                <FaCertificate className="text-[#D4B25F]" /> Certificates
+                <FaCertificate className="text-[#C47E00]" /> Certificates
               </Link>
             </li>
             <li>
               <Link
                 to="/contact"
-                className="flex items-center gap-2 hover:underline hover:text-[#8F5A3C] transition"
+                className="flex items-center gap-2 hover:underline hover:text-[#F4B400] transition"
               >
-                <FaPhoneAlt className="text-[#D4B25F]" /> Contact
+                <FaPhoneAlt className="text-[#C47E00]" /> Contact
               </Link>
             </li>
 
@@ -148,63 +158,64 @@ const Footer = () => {
             <li>
               <Link
                 to="/cookie-policy"
-                className="flex items-center gap-2 hover:underline hover:text-[#8F5A3C] transition"
+                className="flex items-center gap-2 hover:underline hover:text-[#F4B400] transition"
               >
-                <FaCookieBite className="text-[#D4B25F]" /> Cookie Policy
+                <FaCookieBite className="text-[#C47E00]" /> Cookie Policy
               </Link>
             </li>
             <li>
               <Link
                 to="/shipping-policy"
-                className="flex items-center gap-2 hover:underline hover:text-[#8F5A3C] transition"
+                className="flex items-center gap-2 hover:underline hover:text-[#F4B400] transition"
               >
-                <FaTruckMoving className="text-[#D4B25F]" /> Shipping Policy
+                <FaTruckMoving className="text-[#C47E00]" /> Shipping Policy
               </Link>
             </li>
             <li>
               <Link
                 to="/refund-return"
-                className="flex items-center gap-2 hover:underline hover:text-[#8F5A3C] transition"
+                className="flex items-center gap-2 hover:underline hover:text-[#F4B400] transition"
               >
-                <FaUndoAlt className="text-[#D4B25F]" /> Refund & Return Policy
+                <FaUndoAlt className="text-[#C47E00]" /> Refund & Return Policy
               </Link>
             </li>
             <li>
               <Link
                 to="/privacy-policy"
-                className="flex items-center gap-2 hover:underline hover:text-[#8F5A3C] transition"
+                className="flex items-center gap-2 hover:underline hover:text-[#F4B400] transition"
               >
-                <FaUserShield className="text-[#D4B25F]" /> Privacy Policy
+                <FaUserShield className="text-[#C47E00]" /> Privacy Policy
               </Link>
             </li>
             <li>
               <Link
                 to="/terms-conditions"
-                className="flex items-center gap-2 hover:underline hover:text-[#8F5A3C] transition"
+                className="flex items-center gap-2 hover:underline hover:text-[#F4B400] transition"
               >
-                <FaFileContract className="text-[#D4B25F]" /> Terms & Conditions
+                <FaFileContract className="text-[#C47E00]" /> Terms & Conditions
               </Link>
             </li>
           </ul>
         </div>
 
         {/* Available Pack Sizes */}
-        <div className="p-6 bg-white/60 backdrop-blur-sm shadow rounded-lg">
-          <h3 className="text-2xl font-extrabold mb-5 tracking-wide drop-shadow text-[#6B3E26] font-serif">
+        <div className="p-6">
+          <h3
+            className="text-2xl font-extrabold mb-5 tracking-wide drop-shadow font-heading text-[#F4B400]"
+            style={{ fontFamily: "Merriweather, serif" }}
+          >
             Available Pack Sizes
           </h3>
-          <ul className="space-y-3 text-sm text-gray-700">
+          <ul
+            className="space-y-3 text-sm font-sans"
+            style={{ fontFamily: "Inter, sans-serif" }}
+          >
             {packSizes.map(({ label, size }) => (
               <li key={size}>
-                {/* Button to navigate to /products with selected size */}
                 <button
                   type="button"
                   onClick={() => handleSizeClick(size)}
-                  className="
-                    w-full text-left
-                    hover:underline hover:text-[#8F5A3C]
-                    transition
-                  "
+                  className="w-full text-left hover:underline hover:text-[#F4B400] transition"
                 >
                   {label}
                 </button>
@@ -214,74 +225,92 @@ const Footer = () => {
         </div>
 
         {/* Contact Us */}
-        <div className="p-6 flex flex-col bg-white/60 backdrop-blur-sm shadow rounded-lg">
-          <h3 className="text-2xl font-extrabold mb-5 tracking-wide drop-shadow text-[#6B3E26] font-serif">
+        <div className="p-6 flex flex-col">
+          <h3
+            className="text-2xl font-extrabold mb-5 tracking-wide drop-shadow font-heading text-[#F4B400]"
+            style={{ fontFamily: "Merriweather, serif" }}
+          >
             Contact Us
           </h3>
-          <ul className="space-y-3 text-sm text-gray-700 mb-6">
+          <ul
+            className="space-y-3 text-sm font-sans mb-6"
+            style={{ fontFamily: "Inter, sans-serif" }}
+          >
             <li>
               <a
-                href="mailto:Info@bhagwatitrader.co.in"
-                className="hover:underline hover:text-[#8F5A3C] transition"
+                href="mailto:Info@shivtrader.co.in"
+                className="hover:underline hover:text-[#F4B400] transition"
               >
-                Info@bhagwatitrader.co.in
+                Info@shivtrader.co.in
               </a>
             </li>
             <li>
               <a
-                href="mailto:Bhagwatitradersdelhi1@gmail.com"
-                className="hover:underline hover:text-[#8F5A3C] transition"
+                href="mailto:Shivtradersdelhi1@gmail.com"
+                className="hover:underline hover:text-[#F4B400] transition"
               >
-                Bhagwatitradersdelhi1@gmail.com
+                Shivtradersdelhi1@gmail.com
               </a>
             </li>
             <li>
               <a
-                href="tel:+917303672909"
-                className="hover:underline hover:text-[#8F5A3C] transition"
+                href="tel:+919211841929"
+                className="hover:underline hover:text-[#F4B400] transition"
               >
-                +91 7303672909
+                +91 9211841929
               </a>
             </li>
           </ul>
 
-          <address className="text-sm leading-relaxed not-italic text-gray-800 mb-6">
-            <h4 className="font-semibold text-base text-[#6B3E26] mb-1">
+          <address
+            className="text-sm leading-relaxed not-italic font-sans text-[#FDF8F3]/90 mb-6"
+            style={{ fontFamily: "Inter, sans-serif" }}
+          >
+            <h4
+              className="font-semibold text-base text-[#C47E00] mb-1 font-heading"
+              style={{ fontFamily: "Merriweather, serif" }}
+            >
               Address:
             </h4>
-            GROUND FLOOR, PLOT NO. 119-120, BLK-D-DDA, SLUM COLONY, Rohini Sector 24, New Delhi, North West Delhi, Delhi, 110085
+            Flat No. 15, 3rd Floor, Block A-4, Pocket 1,<br />
+            Rohini Sector 34, North West Delhi,<br />
+            110042, India
           </address>
 
           {/* GST & UDYAM */}
-          <div className="text-xs text-gray-600 space-y-1">
+          <div
+            className="text-xs font-sans text-[#FDF8F3]/80 space-y-1"
+            style={{ fontFamily: "Inter, sans-serif" }}
+          >
             <p>
-              <span className="font-semibold text-[#6B3E26]">GSTIN:</span>{" "}
-              07GKXPS5124N1Z3
+              <span className="font-semibold text-[#C47E00]">GSTIN:</span>{" "}
+              07MHBPK0355G1ZE
             </p>
             <p>
-              <span className="font-semibold text-[#6B3E26]">UDYAM:</span>{" "}
-              UDYAM-DL-06-0166578
+              <span className="font-semibold text-[#C47E00]">UDYAM:</span>{" "}
+              ##############
             </p>
           </div>
         </div>
       </div>
 
       {/* Visitor Counter */}
-      <div className="relative z-10 mt-14 text-center">
+      <div className="relative z-10 mt-14 text-center text-white">
         <VisitorCounter />
       </div>
 
       {/* Divider */}
-      <div className="relative z-10 mt-10 border-t border-[#D4B25F]/50"></div>
+      <div className="relative z-10 mt-10 border-t border-[#F4B400]/50" />
 
       {/* Footer Bottom */}
-      <div className="relative z-10 mt-6 flex flex-col justify-center items-center text-sm font-light tracking-wide text-gray-700 space-y-1">
-        <span>© {year} Bhagwati Traders. All rights reserved.</span>
+      <div className="relative z-10 mt-6 flex flex-col justify-center items-center text-sm font-light tracking-wide text-[#FDF8F3]/90 space-y-1 font-sans"
+           style={{ fontFamily: "Inter, sans-serif" }}>
+        <span>© {year} Shiv Traders. All rights reserved.</span>
         <a
           href="http://webworldhub.co.in"
           target="_blank"
           rel="noopener noreferrer"
-          className="hover:underline hover:text-[#6B3E26] transition cursor-pointer font-semibold"
+          className="hover:underline hover:text-[#F4B400] transition cursor-pointer font-semibold"
         >
           Designed & Developed by Web World Hub
         </a>

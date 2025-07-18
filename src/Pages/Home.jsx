@@ -1,16 +1,17 @@
 import React from 'react'
-import Hero from '../Components/Hero'
 import AboutSection from '../Components/AboutSection'
 import WhyChoose from '../Components/WhyChoose'
 import TestimonialsSection from '../Components/TestimonialsSection'
+import ShivTradersHero from '../Components/ShivTradersHero'
+import ShivTradersFeatures from '../Components/ShivTradersFeatures'
 
 const Home = () => {
   return (
     <div>
-      <Hero/>
+      <ShivTradersHero/>
       <AboutSection/>
       <WhyChoose/>
-      <TestimonialsSection/>
+      <ShivTradersFeatures/>
     </div>
   )
 }

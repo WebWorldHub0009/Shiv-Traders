@@ -1,149 +1,126 @@
 import React from "react";
 import { motion } from "framer-motion";
-import { useInView } from "react-intersection-observer";
-import { FaCheckCircle, FaLeaf } from "react-icons/fa";
-import { Link } from "react-router-dom";
-import about1 from "../assets/images/box1.jpg";     // main ghee image
-import about2 from "../assets/images/box3p.png";   // secondary ghee image
+import {
+  FaShieldAlt,     // Purity / Trust
+  FaFlask,         // Lab Tested
+  FaMortarPestle,  // Traditional / Handmade vibe
+  FaTruckLoading,  // Bulk / Supply
+} from "react-icons/fa";
+import bgSection from "../assets/images/abbg.avif"; // Use farm/ghee bg
 
-const WhyChoose = () => {
-  const { ref, inView } = useInView({
-    triggerOnce: false,
-    threshold: 0.2,
-  });
+// Shiv Traders Reasons
+const reasons = [
+  {
+    icon: (
+      <FaShieldAlt className="text-[#ffcf4c] text-4xl group-hover:rotate-12 transition-transform duration-500" />
+    ),
+    title: "Purity You Can Trust",
+    desc: "No adulterants, no shortcuts—batch‑wise checks help ensure authentic Desi Ghee every time.",
+  },
+  {
+    icon: (
+      <FaFlask className="text-[#ffcf4c] text-4xl group-hover:scale-110 transition-transform duration-500" />
+    ),
+    title: "Lab Tested Quality",
+    desc: "Moisture, FFA, and fat content monitored under hygienic conditions for consistent nutrition.",
+  },
+  {
+    icon: (
+      <FaMortarPestle className="text-[#ffcf4c] text-4xl group-hover:-rotate-12 transition-transform duration-500" />
+    ),
+    title: "Traditional Preparation",
+    desc: "Slow‑cooked, aroma‑rich Desi Ghee made to preserve flavor, grain, and natural goodness.",
+  },
+  {
+    icon: (
+      <FaTruckLoading className="text-[#ffcf4c] text-4xl group-hover:scale-125 transition-transform duration-500" />
+    ),
+    title: "Retail & Bulk Supply",
+    desc: "Serving homes, sweet shops, temples & food businesses—available in multiple pack sizes.",
+  },
+];
 
+// Motion variants
+const cardVariant = {
+  hidden: { opacity: 0, y: 40 },
+  visible: (i) => ({
+    opacity: 1,
+    y: 0,
+    transition: { delay: 0.2 + i * 0.2, duration: 0.6, ease: "easeOut" },
+  }),
+};
+
+const WhyChooseUs = () => {
   return (
     <section
-      id="about"
-      className="w-full py-16 bg-[#FFF8ED] relative overflow-hidden"
+      className="relative w-full py-24 px-6 md:px-16 bg-cover bg-center bg-no-repeat"
+      style={{ backgroundImage: `url(${bgSection})` }}
     >
-      {/* Soft Background Accent */}
-      <motion.div
-        className="absolute inset-0 bg-gradient-to-br from-[#EEDFC9] to-transparent opacity-20 pointer-events-none"
-        initial={{ opacity: 0 }}
-        animate={inView ? { opacity: 0.2 } : { opacity: 0 }}
-        transition={{ duration: 1.2, ease: "easeInOut" }}
-      />
+      {/* Brand overlay */}
+      <div className="absolute inset-0 z-0 bg-gradient-to-b from-[#7A1E09]/90 via-[#7A1E09]/75 to-[#7A1E09]/60" />
 
-      <div
-        ref={ref}
-        className="container mx-auto flex flex-col md:flex-row items-center gap-10 px-6 relative z-10"
-      >
-        {/* LEFT: Image Cluster */}
-        <div className="relative flex justify-center items-center w-full md:w-1/2">
-          {/* Main Image */}
-          <motion.img
-            src={about1}
-            alt="Pure Desi Ghee"
-            /* keep wrapper footprint generous, just limit image height */
-            className="
-              rounded-xl shadow-2xl
-              max-w-[16rem] sm:max-w-[20rem] md:max-w-[24rem]
-              max-h-[10rem] sm:max-h-[14rem] md:max-h-[16rem]
-              w-auto h-auto object-contain
-            "
-            initial={{ x: -100, opacity: 0 }}
-            animate={inView ? { x: 0, opacity: 1 } : { x: -100, opacity: 0 }}
-            transition={{ duration: 0.8, ease: 'easeOut' }}
-          />
-
-          {/* Overlay / Accent Image */}
-          <motion.img
-            src={about2}
-            alt="Bhagwati Ghee Product"
-            className="
-              rounded-xl shadow-xl
-              absolute
-              bottom-[-20px] right-[10px]
-              max-w-[5rem] sm:max-w-[6.5rem] md:max-w-[8rem]
-              max-h-[5rem] sm:max-h-[6.5rem] md:max-h-[8rem]
-              w-auto h-auto object-contain
-              shrink-0
-            "
-            initial={{ opacity: 0, scale: 0.5, rotate: -15 }}
-            animate={
-              inView
-                ? { opacity: 1, scale: 1, rotate: 0 }
-                : { opacity: 0, scale: 0.5, rotate: -15 }
-            }
-            transition={{ duration: 0.7, delay: 0.5, ease: 'easeOut' }}
-          />
-
-          {/* Bubble Badge */}
-          <motion.div
-            className="
-              absolute -top-4 left-4
-              bg-[#D4B25F] text-white
-              px-3 py-2 md:px-4 md:py-3
-              rounded-full shadow-lg
-              text-center
-              text-[10px] sm:text-xs md:text-sm font-semibold
-            "
-            initial={{ scale: 0 }}
-            animate={inView ? { scale: 1 } : { scale: 0 }}
-            transition={{ duration: 0.5, delay: 0.8 }}
-          >
-            100% Pure <br /> Desi Ghee
-          </motion.div>
-        </div>
-
-        {/* RIGHT: Text Content */}
-        <motion.div
-          className="w-full md:w-1/2"
-          initial={{ x: 100, opacity: 0 }}
-          animate={inView ? { x: 0, opacity: 1 } : { x: 100, opacity: 0 }}
-          transition={{ duration: 0.8, ease: "easeOut" }}
+      <div className="relative z-10 max-w-7xl mx-auto text-white text-center">
+        {/* Heading */}
+        <motion.h2
+          initial={{ opacity: 0, y: -20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.7 }}
+          className="text-4xl md:text-5xl font-extrabold mb-4 font-heading"
+          style={{ fontFamily: "Merriweather, serif" }}
         >
-          <p className="text-[#B3843E] font-bold uppercase tracking-wider mb-2">
-            Who We Are
-          </p>
-          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6 leading-snug">
-            Why Choose{" "}
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#D4B25F] to-[#8F5A3C]">
-              BHAGWATI TRADERS
-            </span>
-          </h2>
-          <p className="text-gray-600 mb-6 leading-relaxed">
-            At Bhagwati Traders, we deliver traditionally prepared, farm-fresh
-            desi ghee packed with natural aroma and authentic flavor. Our
-            process ensures purity, nutrition, and the rich granular texture
-            you can trust for your family.
-          </p>
+          Why Shiv Traders Desi Ghee?
+        </motion.h2>
 
-          <div className="flex flex-col gap-4 mb-8">
-            <div className="flex items-center gap-4">
-              <FaLeaf className="text-[#D4B25F] text-2xl" />
-              <span className="text-gray-700 font-semibold">
-                Made from Farm-Fresh Cow Milk
-              </span>
-            </div>
-            <div className="flex items-center gap-4">
-              <FaCheckCircle className="text-[#D4B25F] text-2xl" />
-              <span className="text-gray-700 font-semibold">
-                100% Pure, No Additives, Lab Tested
-              </span>
-            </div>
-          </div>
+        {/* Subtitle */}
+        <motion.p
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8, delay: 0.3 }}
+          className="text-[#FDF8F3]/90 max-w-xl mx-auto text-base md:text-lg mb-12 font-sans"
+          style={{ fontFamily: "Inter, sans-serif" }}
+        >
+          Pure ingredients. Traditional taste. Trusted quality for families, shops, and bulk buyers.
+        </motion.p>
 
-          {/* Buttons */}
-          <div className="flex gap-4 flex-wrap">
-            <Link
-              to="/about"
-              className="px-6 py-3 bg-[#D4B25F] hover:bg-[#B8933B] text-white rounded-lg transition font-semibold"
+        {/* Cards */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+          {reasons.map((item, index) => (
+            <motion.div
+              key={index}
+              custom={index}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, amount: 0.3 }}
+              variants={cardVariant}
+              className="group relative bg-white/10 backdrop-blur-md p-6 rounded-xl shadow-xl
+                         hover:shadow-2xl transition duration-500 hover:-translate-y-2
+                         border-t-4 border-b-4 border-transparent hover:border-[#F4B400]
+                         min-h-[260px] flex flex-col justify-start"
             >
-              More About Us
-            </Link>
-            <Link
-              to="/products"
-              className="px-6 py-3 border-2 border-[#D4B25F] hover:bg-[#D4B25F] hover:text-white text-[#D4B25F] rounded-lg transition font-semibold"
-            >
-              Shop Now
-            </Link>
-          </div>
-        </motion.div>
+              {/* Glow Border */}
+              <div className="pointer-events-none absolute inset-0 border border-transparent group-hover:border-[#C47E00] rounded-xl transition-all duration-700" />
+
+              <div className="mb-5 flex justify-center">{item.icon}</div>
+              <h4
+                className="text-xl font-semibold mb-2 font-heading text-[#ffcf4c]"
+                style={{ fontFamily: "Merriweather, serif" }}
+              >
+                {item.title}
+              </h4>
+              <p
+                className="text-sm text-[#FDF8F3]/90 font-sans"
+                style={{ fontFamily: "Inter, sans-serif" }}
+              >
+                {item.desc}
+              </p>
+            </motion.div>
+          ))}
+        </div>
       </div>
     </section>
   );
 };
 
-export default WhyChoose;
+export default WhyChooseUs;

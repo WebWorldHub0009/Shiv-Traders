@@ -1,213 +1,150 @@
-import React from "react";
-import { motion } from "framer-motion";
-import Tilt from "react-parallax-tilt";
-import { FaAward, FaFlask, FaLeaf, FaChevronDown } from "react-icons/fa";
-import { GiCow } from "react-icons/gi"; // ✅ added cow icon
+import React, { useRef } from "react";
+import { motion, useScroll, useTransform } from "framer-motion";
 
-import aboutImg from "../assets/images/jar5.jpg"; // TODO: update path
-import aboutBg from "../assets/images/abbg.avif"; // TODO: update path
-import { Link } from "react-router-dom";
+// Icons chosen to match Desi Ghee trust points
+import { GiCow } from "react-icons/gi";
+import { FaFlask, FaHandshake } from "react-icons/fa";
 
-const highlightItems = [
-  {
-    title: "Pure Desi Ghee",
-    icon: <GiCow />,
-    desc: "Made from select cow & buffalo milk.",
-  },
-  {
-    title: "Traditional Bilona",
-    icon: <FaLeaf />,
-    desc: "Slow-churned for rich granules & aroma.",
-  },
-  {
-    title: "Lab Tested",
-    icon: <FaFlask />,
-    desc: "Quality & purity checks every batch.",
-  },
-];
+// TEMP image imports – update paths to real ghee assets
+import gheeMain from "../assets/images/jar1.avif";   // was bgMain
+// import gheeProcess from "../assets/images/jar2.jpg"; // was bgSmall
 
+/**
+ * Why Shiv Traders – Trust Section
+ * Scroll-reactive floating secondary image
+ * Reuses layout from your original RideAssurance component.
+ *
+ * NOTE: Keeping the component name RideAssurance to avoid breaking imports.
+ * You can rename to WhyShivTraders if you update the import everywhere.
+ */
 const AboutSection = () => {
+  const sectionRef = useRef(null);
+  const { scrollYProgress } = useScroll({
+    target: sectionRef,
+    offset: ["start end", "end start"],
+  });
+
+  // Parallax lift for the floating image
+  const yMove = useTransform(scrollYProgress, [0, 1], [100, -150]);
+
   return (
     <section
-      id="about"
-      className="
-        relative py-20 overflow-hidden
-        bg-gradient-to-br from-[#FFFDF8]/90 via-[#F8F1E7]/90 to-[#FFFDF8]/90
-        bg-[length:200%_200%] animate-[gradientFlow_15s_ease_infinite]
-      "
-      style={{
-        backgroundImage: `url(${aboutBg})`,
-        backgroundSize: "cover",
-        backgroundPosition: "center",
-        backgroundRepeat: "no-repeat",
-      }}
+      ref={sectionRef}
+      className="relative w-full px-6 py-20 md:py-28 bg-[#FDF8F3] overflow-hidden"
     >
-      {/* Soft overlay */}
-      <div className="absolute inset-0 bg-[#FFFDF8]/70"></div>
+      {/* Decorative low-opacity brand circle */}
+      <svg
+        className="absolute -top-20 -left-20 w-[700px] opacity-5 z-0 hidden lg:block"
+        viewBox="0 0 800 800"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <circle cx="400" cy="400" r="400" fill="#7A1E09" />
+      </svg>
 
-      <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-2 gap-16 items-center relative z-10">
+      <div className="relative z-10 max-w-7xl mx-auto flex flex-col-reverse lg:flex-row items-center gap-14 lg:gap-24">
         {/* Left Content */}
-        <motion.div
-          initial={{ opacity: 0, x: -40 }}
-          whileInView={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.6 }}
-          viewport={{ once: true, amount: 0.3 }}
-        >
-          <p className="text-sm text-[#6B3E26]/80 mb-1">Namaste!</p>
-          <h2 className="text-4xl font-extrabold text-[#6B3E26] leading-snug font-serif">
-            About <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#6B3E26] to-[#8F5A3C]">Bhagwati Traders</span>
+        <div className="w-full lg:w-1/2 text-center lg:text-left">
+          <h2
+            className="text-4xl md:text-5xl font-extrabold mb-8 leading-tight text-[#7A1E09] font-heading"
+            style={{ fontFamily: "Merriweather, serif" }}
+          >
+            Why Shiv Traders Desi Ghee?
           </h2>
 
-          <p className="mt-4 text-gray-700 text-lg max-w-md">
-            We’re on a mission to bring **authentic, nutrient-rich Desi Ghee**
-            from trusted dairy farmers to every Indian home. Prepared using
-            time-honored slow-churning methods, our ghee retains its granular
-            texture, rich aroma, and all the goodness your family deserves.
-          </p>
-
-          <p className="mt-4 text-gray-600 text-base max-w-md">
-            Every batch is quality-checked and packed fresh so you enjoy
-            purity, taste, and trust—just like homemade ghee.
-          </p>
-
-          <Link to="/about" className="inline-block mt-6">
-            <button
-              className="
-                cursor-pointer px-8 py-3 rounded-full text-white text-sm font-medium shadow-md
-                bg-[#6B3E26] hover:bg-[#8F5A3C]
-                transition-colors duration-300
-              "
-            >
-              Know Our Story
-            </button>
-          </Link>
-
-          {/* Highlight Trio */}
-          <div className="mt-12 grid grid-cols-1 sm:grid-cols-3 gap-6 text-center">
-            {highlightItems.map((item, index) => (
-              <div
-                key={index}
-                className="flex flex-col items-center space-y-2"
-              >
-                <div
-                  className="
-                    text-[#8F5A3C] text-3xl
-                    transition-transform duration-300
-                    hover:scale-110 hover:-rotate-3
-                  "
-                >
-                  {item.icon}
-                </div>
-                <h4 className="font-semibold text-[#6B3E26]">{item.title}</h4>
-                <p className="text-sm text-gray-600 text-center">{item.desc}</p>
+          <div className="space-y-8">
+            {/* Point 1 */}
+            <div className="flex items-start gap-5">
+              <div className="p-4 rounded-lg bg-[#7A1E09] text-[#F4B400] text-2xl shadow-md">
+                <GiCow />
               </div>
-            ))}
-          </div>
-        </motion.div>
-
-        {/* Right Visual */}
-        <motion.div
-          initial={{ opacity: 0, x: 40 }}
-          whileInView={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.6 }}
-          viewport={{ once: true, amount: 0.3 }}
-          className="relative w-full flex justify-center items-center"
-        >
-          {/* Dotted Pattern */}
-          <div className="absolute w-26 h-26 -top-6 -left-4 z-0 opacity-20">
-            <svg
-              className="w-full h-full"
-              viewBox="0 0 100 100"
-              fill="none"
-              aria-hidden="true"
-            >
-              <pattern
-                id="aboutDots"
-                x="0"
-                y="0"
-                width="10"
-                height="10"
-                patternUnits="userSpaceOnUse"
-              >
-                <circle
-                  cx="1"
-                  cy="1"
-                  r="1"
-                  className="text-[#6B3E26]/40"
-                  fill="currentColor"
-                />
-              </pattern>
-              <rect width="100" height="100" fill="url(#aboutDots)" />
-            </svg>
-          </div>
-
-          {/* Tilted Image */}
-          <Tilt
-            tiltMaxAngleX={8}
-            tiltMaxAngleY={8}
-            glareEnable={true}
-            glareColor="#ffffff"
-            glareMaxOpacity={0.08}
-            className="w-full"
-          >
-            <div className="relative z-10 w-full max-w-sm mx-auto overflow-hidden rounded-2xl shadow-xl">
-              <img
-                src={aboutImg}
-                alt="Bhagwati Traders Ghee"
-                className="object-cover w-full h-auto"
-              />
+              <div className="text-left">
+                <h4
+                  className="font-semibold text-lg text-[#7A1E09] font-heading"
+                  style={{ fontFamily: "Merriweather, serif" }}
+                >
+                  Pure Milk. Rich Aroma.
+                </h4>
+                <p
+                  className="text-gray-700 text-sm sm:text-base font-sans"
+                  style={{ fontFamily: "Inter, sans-serif" }}
+                >
+                  Sourced from healthy, well‑cared cows; slow cooked for natural
+                  color, grain, and flavor that true Desi Ghee lovers expect.
+                </p>
+              </div>
             </div>
-          </Tilt>
 
-          {/* Floating Cards */}
-          <div
-            className="
-              absolute -top-6 -left-6
-              bg-white/50 backdrop-blur-md border border-white/30
-              rounded-xl shadow-xl px-4 py-2 flex items-center gap-2 text-sm z-20
-            "
-          >
-            <FaFlask className="text-[#8F5A3C]" />
-            <div>
-              <p className="font-semibold text-[#6B3E26]">Lab Tested</p>
+            {/* Point 2 */}
+            <div className="flex items-start gap-5">
+              <div className="p-4 rounded-lg bg-[#F4B400] text-white text-2xl shadow-md">
+                <FaFlask />
+              </div>
+              <div className="text-left">
+                <h4
+                  className="font-semibold text-lg text-[#7A1E09] font-heading"
+                  style={{ fontFamily: "Merriweather, serif" }}
+                >
+                  Lab Tested & Hygienic
+                </h4>
+                <p
+                  className="text-gray-700 text-sm sm:text-base font-sans"
+                  style={{ fontFamily: "Inter, sans-serif" }}
+                >
+                  Batch checks for adulteration and moisture—crafted under clean,
+                  monitored conditions so you get trusted quality every time.
+                </p>
+              </div>
+            </div>
+
+            {/* Point 3 */}
+            <div className="flex items-start gap-5">
+              <div className="p-4 rounded-lg bg-[#C47E00] text-white text-2xl shadow-md">
+                <FaHandshake />
+              </div>
+              <div className="text-left">
+                <h4
+                  className="font-semibold text-lg text-[#7A1E09] font-heading"
+                  style={{ fontFamily: "Merriweather, serif" }}
+                >
+                  Retail & Bulk Supply
+                </h4>
+                <p
+                  className="text-gray-700 text-sm sm:text-base font-sans"
+                  style={{ fontFamily: "Inter, sans-serif" }}
+                >
+                  Serving homes, sweet shops, temples, and food businesses. Ask
+                  about bulk tins and distributor pricing.
+                </p>
+              </div>
             </div>
           </div>
+        </div>
 
-          <div
-            className="
-              absolute top-4 right-0
-              bg-white/50 backdrop-blur-md border border-white/30
-              rounded-xl shadow-xl px-4 py-2 flex items-center gap-2 text-sm z-20
-            "
+        {/* Right Image Section */}
+        <div className="relative w-full lg:w-1/2 flex justify-center items-center">
+          {/* Floating Small Image
+          <motion.div
+            style={{ y: yMove }}
+            className="absolute -left-8 sm:left-0 bottom-0 w-36 sm:w-48 md:w-60 z-10 rounded-xl shadow-xl overflow-hidden ring-4 ring-[#F4B400]/60"
           >
-            <FaAward className="text-[#8F5A3C]" />
-            <p className="font-semibold text-[#6B3E26]">Authentic Quality</p>
-          </div>
+            <img
+              src={gheeProcess}
+              alt="Traditional Ghee Preparation"
+              className="w-full h-auto object-cover rounded-xl"
+            />
+          </motion.div> */}
 
-          <div
-            className="
-              absolute bottom-0 left-4
-              bg-white/50 backdrop-blur-md border border-white/30
-              rounded-xl shadow-xl px-4 py-2 flex items-center gap-2 text-sm z-20
-            "
-          >
-            <GiCow className="text-[#8F5A3C]" />
-            <div>
-              <p className="font-semibold text-[#6B3E26]">Farm Sourced</p>
-              <p className="text-gray-600 text-xs">Trusted Dairies</p>
-            </div>
+          {/* Main Image */}
+          <div className="w-[90%] max-w-lg rounded-xl overflow-hidden shadow-2xl ring-8 ring-[#7A1E09]/10">
+            <img
+              src={gheeMain}
+              alt="Pure Desi Ghee Jar"
+              className="w-full h-auto object-cover rounded-xl"
+            />
           </div>
-        </motion.div>
+        </div>
       </div>
-
-      {/* Scroll Indicator */}
-      <motion.div
-        animate={{ y: [0, -10, 0] }}
-        transition={{ repeat: Infinity, duration: 2 }}
-        className="mt-10 flex justify-center relative z-10"
-      >
-        <FaChevronDown className="text-[#8F5A3C] text-xl" />
-      </motion.div>
     </section>
   );
 };

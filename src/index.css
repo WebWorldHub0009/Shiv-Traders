@@ -1,7 +1,13 @@
 @import "tailwindcss";
-h1, h2, h3, .heading {
-  font-family: 'Cinzel', serif;
+/* Font Setup */
+body {
+  font-family: 'Inter', sans-serif; /* For body text */
 }
-body, p, span {
-  font-family: 'Quicksand', sans-serif;
+
+h1, h2, h3 {
+  font-family: 'Merriweather', serif; /* For headings */
+}
+
+.hero-title, .special-heading {
+  font-family: 'Prata', serif; /* For stylish headings */
 }
